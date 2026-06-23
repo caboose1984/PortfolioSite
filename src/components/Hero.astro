@@ -1,0 +1,81 @@
+---
+import { site } from "../data/site";
+import Icon from "./Icon.astro";
+---
+
+<section
+  id="top"
+  class="relative mx-auto flex min-h-[88vh] max-w-5xl flex-col justify-center px-6 py-24"
+>
+  <p
+    class="reveal mb-5 font-mono text-sm text-[var(--color-accent)]"
+    style="transition-delay:60ms"
+  >
+    Hi, my name is
+  </p>
+
+  <h1
+    class="reveal text-4xl font-bold tracking-tight sm:text-6xl"
+    style="transition-delay:120ms"
+  >
+    {site.name}
+  </h1>
+
+  <p
+    class="reveal mt-3 text-2xl font-semibold tracking-tight text-[var(--color-muted)] sm:text-4xl"
+    style="transition-delay:180ms"
+  >
+    {site.role}
+  </p>
+
+  <p
+    class="reveal mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]"
+    style="transition-delay:240ms"
+  >
+    {site.tagline}
+  </p>
+
+  <div
+    class="reveal mt-9 flex flex-wrap items-center gap-4"
+    style="transition-delay:300ms"
+  >
+    <a
+      href="#contact"
+      class="group inline-flex items-center gap-2 rounded-md bg-[var(--color-accent)] px-5 py-3 font-medium text-[var(--color-bg)] transition-transform hover:-translate-y-0.5"
+    >
+      Get in touch
+      <Icon
+        name="arrow"
+        class="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+      />
+    </a>
+    {
+      site.socials.resumePdf && (
+        <a
+          href={site.socials.resumePdf}
+          class="inline-flex items-center gap-2 rounded-md border border-[var(--color-border)] px-5 py-3 font-medium text-[var(--color-fg)] transition-colors hover:border-[var(--color-accent-soft)] hover:text-[var(--color-accent)]"
+        >
+          <Icon name="file" class="h-4 w-4" />
+          Résumé
+        </a>
+      )
+    }
+  </div>
+
+  <!-- Stats strip -->
+  <dl
+    class="reveal mt-16 grid grid-cols-1 gap-6 border-t border-[var(--color-border)] pt-8 sm:grid-cols-3"
+    style="transition-delay:360ms"
+  >
+    {
+      site.stats.map((s) => (
+        <div>
+          <dt class="text-3xl font-bold tracking-tight text-[var(--color-accent)]">
+            {s.value}
+          </dt>
+          <dd class="mt-1 text-sm text-[var(--color-muted)]">{s.label}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>

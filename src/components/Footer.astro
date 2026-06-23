@@ -1,0 +1,15 @@
+---
+import { site } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer
+  class="border-t border-[var(--color-border-soft)] py-8 text-center font-mono text-xs text-[var(--color-faint)]"
+>
+  <p>
+    Designed &amp; built by {site.name} · {year}
+  </p>
+  <p class="mt-1">
+    Astro · Tailwind · deployed on GitHub Pages
+  </p>
+</footer>

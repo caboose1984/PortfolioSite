@@ -1,0 +1,33 @@
+---
+import Section from "./Section.astro";
+import { about, skills } from "../data/resume";
+---
+
+<Section id="about" index="01" eyebrow="Profile" title="About">
+  <div class="grid gap-12 md:grid-cols-5">
+    <div class="space-y-4 text-[var(--color-muted)] md:col-span-3">
+      {about.map((p) => <p class="leading-relaxed reveal">{p}</p>)}
+    </div>
+
+    <aside class="reveal md:col-span-2">
+      <div
+        class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6"
+      >
+        <p
+          class="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-faint)]"
+        >
+          Currently working with
+        </p>
+        <div class="flex flex-wrap gap-2">
+          {
+            skills[0].items.concat(skills[1].items.slice(0, 3)).map((s) => (
+              <span class="rounded-md bg-[var(--color-accent-dim)] px-2.5 py-1 font-mono text-xs text-[var(--color-accent)]">
+                {s}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+    </aside>
+  </div>
+</Section>

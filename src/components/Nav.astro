@@ -1,0 +1,85 @@
+---
+import { site } from "../data/site";
+import Icon from "./Icon.astro";
+
+const links = [
+  { href: "#about", label: "About" },
+  { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
+  { href: "#contact", label: "Contact" },
+];
+const initials = site.name
+  .split(" ")
+  .map((p) => p[0])
+  .join("");
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-[var(--color-border-soft)] bg-[var(--color-bg)]/80 backdrop-blur-md"
+>
+  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <a
+      href="#top"
+      class="font-mono text-sm font-semibold tracking-tight text-[var(--color-fg)]"
+    >
+      <span class="text-[var(--color-accent)]">{"<"}</span>{initials}<span
+        class="text-[var(--color-accent)]">{" />"}</span
+      >
+    </a>
+
+    <ul class="hidden items-center gap-7 md:flex">
+      {
+        links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              class="text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-fg)]"
+            >
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex items-center gap-3">
+      {
+        site.socials.github && (
+          <a
+            href={site.socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            class="text-[var(--color-muted)] transition-colors hover:text-[var(--color-fg)]"
+          >
+            <Icon name="github" class="h-5 w-5" />
+          </a>
+        )
+      }
+      {
+        site.socials.linkedin && (
+          <a
+            href={site.socials.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="text-[var(--color-muted)] transition-colors hover:text-[var(--color-fg)]"
+          >
+            <Icon name="linkedin" class="h-5 w-5" />
+          </a>
+        )
+      }
+      {
+        site.socials.resumePdf && (
+          <a
+            href={site.socials.resumePdf}
+            class="hidden rounded-md border border-[var(--color-border)] px-3 py-1.5 text-sm text-[var(--color-fg)] transition-colors hover:border-[var(--color-accent-soft)] hover:text-[var(--color-accent)] sm:inline-block"
+          >
+            Résumé
+          </a>
+        )
+      }
+    </div>
+  </nav>
+</header>

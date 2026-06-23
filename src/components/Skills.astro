@@ -1,0 +1,88 @@
+---
+import Section from "./Section.astro";
+import { skills, education, certifications, writing } from "../data/resume";
+import Icon from "./Icon.astro";
+---
+
+<Section id="skills" index="04" eyebrow="Toolbox" title="Skills & Background">
+  <div class="grid gap-6 sm:grid-cols-2">
+    {
+      skills.map((g) => (
+        <div class="reveal rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+          <h3 class="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-faint)]">
+            {g.group}
+          </h3>
+          <ul class="flex flex-wrap gap-2">
+            {g.items.map((s) => (
+              <li class="rounded-md bg-[var(--color-bg-soft)] px-2.5 py-1 text-sm text-[var(--color-muted)]">
+                {s}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-6 grid gap-6 sm:grid-cols-2">
+    {
+      writing.length > 0 && (
+        <div class="reveal rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+          <h3 class="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-faint)]">
+            Writing & Talks
+          </h3>
+          <ul class="space-y-3">
+            {writing.map((w) => (
+              <li class="text-sm">
+                {w.url ? (
+                  <a
+                    href={w.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 text-[var(--color-fg)] transition-colors hover:text-[var(--color-accent)]"
+                  >
+                    {w.title}
+                    <Icon name="external" class="h-3.5 w-3.5" />
+                  </a>
+                ) : (
+                  <span class="text-[var(--color-fg)]">{w.title}</span>
+                )}
+                <span class="block text-xs text-[var(--color-faint)]">
+                  {w.venue} · {w.year}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <div
+      class="reveal rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6"
+    >
+      <h3
+        class="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-faint)]"
+      >
+        Education & Certs
+      </h3>
+      <ul class="space-y-3">
+        {
+          education.map((e) => (
+            <li class="text-sm">
+              <span class="text-[var(--color-fg)]">{e.credential}</span>
+              <span class="block text-xs text-[var(--color-faint)]">
+                {e.school} · {e.year}
+                {e.detail && ` — ${e.detail}`}
+              </span>
+            </li>
+          ))
+        }
+        {
+          certifications.map((c) => (
+            <li class="text-sm text-[var(--color-muted)]">{c}</li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</Section>

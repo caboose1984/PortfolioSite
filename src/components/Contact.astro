@@ -1,0 +1,55 @@
+---
+import { site } from "../data/site";
+import Icon from "./Icon.astro";
+
+const socialLinks = [
+  { key: "github", label: "GitHub", icon: "github" as const },
+  { key: "linkedin", label: "LinkedIn", icon: "linkedin" as const },
+  { key: "twitter", label: "X / Twitter", icon: "twitter" as const },
+  { key: "bluesky", label: "Bluesky", icon: "bluesky" as const },
+].filter((s) => site.socials[s.key as keyof typeof site.socials]);
+---
+
+<section
+  id="contact"
+  class="mx-auto max-w-3xl px-6 py-24 text-center sm:py-32"
+>
+  <p
+    class="reveal mb-3 font-mono text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]"
+  >
+    05 — What's next
+  </p>
+  <h2 class="reveal text-3xl font-bold tracking-tight sm:text-4xl">
+    Let's build something solid.
+  </h2>
+  <p class="reveal mx-auto mt-5 max-w-xl leading-relaxed text-[var(--color-muted)]">
+    I'm open to staff-level roles, advisory work, and interesting systems
+    problems. The fastest way to reach me is email — I read everything.
+  </p>
+
+  <div class="reveal mt-9 flex flex-col items-center justify-center gap-4">
+    <a
+      href={`mailto:${site.email}`}
+      class="group inline-flex items-center gap-2 rounded-md bg-[var(--color-accent)] px-6 py-3 font-medium text-[var(--color-bg)] transition-transform hover:-translate-y-0.5"
+    >
+      <Icon name="mail" class="h-4 w-4" />
+      {site.email}
+    </a>
+
+    <div class="mt-2 flex items-center gap-5">
+      {
+        socialLinks.map((s) => (
+          <a
+            href={site.socials[s.key as keyof typeof site.socials]}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={s.label}
+            class="text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent)]"
+          >
+            <Icon name={s.icon} class="h-6 w-6" />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
