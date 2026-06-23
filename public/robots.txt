@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://caboose1984.github.io/sitemap-index.xml
+Sitemap: https://andrewarsenault.ca/sitemap-index.xml

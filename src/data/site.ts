@@ -14,12 +14,12 @@ export const site = {
    * For a GitHub user/org page repo named `<username>.github.io`, this is
    *   https://<username>.github.io
    */
-  url: "https://caboose1984.github.io",
+  url: "https://andrewarsenault.ca",
 
   /** Social / professional links. Leave a value empty ("") to hide the link. */
   socials: {
     github: "https://github.com/Caboose1984",
-    linkedin: "", // add your LinkedIn URL here to show the icon, e.g. https://www.linkedin.com/in/your-handle
+    linkedin: "https://www.linkedin.com/in/andrew-arsenault-810a3381/",
 
     twitter: "",
     bluesky: "",
