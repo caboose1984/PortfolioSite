@@ -55,7 +55,7 @@ export interface Education {
 
 export const about = [
   "I'm a results-driven Senior Systems Engineer with 10+ years owning enterprise SaaS platforms, engineering workflow automation, and eliminating operational toil at scale. My deep work is in Slack platform engineering, Google Workspace administration, and identity & access management — Okta, SCIM, SAML, and OAuth.",
-  "I build the API integrations, low-code/no-code automations, and custom tooling that remove friction and let teams scale. I've worked hands-on with generative AI tooling and concepts — MCP, prompt engineering, and AI-driven workflow automation — and I partner cross-functionally to turn process pain into high-impact engineering solutions.",
+  "I build the API integrations, low-code/no-code automations, and custom tooling that remove friction and let teams scale. I design and maintain multiple MCP servers — including the Google Workspace MCP I built personally — and lean on AI tooling like Claude, Vercel, Gemini, and GPT to design, build, and ship systems quickly and at scale. I partner cross-functionally to turn process pain into high-impact engineering solutions.",
 ];
 
 export const experience: Experience[] = [
@@ -69,13 +69,16 @@ export const experience: Experience[] = [
       "Primary Slack platform owner and service owner — governance, app security, provisioning, and AI feature rollout across an enterprise-scale workforce.",
     highlights: [
       "Own the Slack platform: lead governance, app security reviews, SCIM behavior, AI feature rollout controls, and elevated-scope approval processes for enterprise-scale reliability and security.",
+      "Eliminated 2,500+ hours of manual work through custom Slack bots, API-driven Jira workflow automations, and self-service tooling that replaced repetitive access and support operations org-wide.",
+      "Serve as subject-matter expert (SME) for Slack, Google Workspace, SendSafely, and DocuSign — owning configuration, security, and escalation support across these platforms for the enterprise.",
       "Engineered IAM improvements across Okta, LDAP, and Workday→Okta→Slack provisioning; designed dynamic attribute-driven group models that replaced static LDAP groups and eliminated manual access provisioning toil org-wide.",
-      "Built custom Slack bots and API-driven Jira workflow automations that eliminated 600+ hours/year of manual work and enabled self-service tooling for support teams.",
-      "Served as IT DRI for the Google Workspace MCP server launch — pre-release testing, OAuth flow validation, and hands-on feedback applying direct MCP and generative-AI integration experience.",
+      "Helped build out integrations on a Go-based orchestration platform that drives automated LDAP group/role assignment to SaaS applications, enabling attribute-driven access provisioning at scale.",
+      "Personally built the Google Workspace MCP server and build and maintain multiple MCP servers — owning design, OAuth flow validation, and release readiness to expose internal systems to AI agents.",
+      "Leverage AI tooling — Claude, Vercel, Gemini, and GPT — to design, build, and ship systems quickly and at scale, accelerating automation and integration delivery across the org.",
       "Drove Slack Webhook Proxy deprecation using Datadog telemetry to find legacy consumers and coordinate migration to native API integrations and custom apps.",
       "Recognized by ESTO leadership for leading simultaneous incident responses and delivering platform solutions for partner teams under tight timelines.",
     ],
-    stack: ["Okta", "Slack Platform", "Workday", "Datadog", "Jira", "Python", "OAuth/SCIM"],
+    stack: ["Okta", "Slack Platform", "Google Workspace", "Go", "Workday", "Datadog", "Jira", "Python", "OAuth/SCIM"],
   },
   {
     company: "Okta",
@@ -168,9 +171,9 @@ export const openSource: OpenSource[] = [];
 export const projects: Project[] = [
   {
     name: "Slack Automation Suite",
-    tagline: "600+ hours/year reclaimed",
+    tagline: "2,500+ hours reclaimed",
     description:
-      "Custom Slack bots and API-driven Jira workflow automations that eliminated 600+ hours of manual work per year, automating complex user-access assignment and enabling self-service tooling for support teams.",
+      "Custom Slack bots and API-driven Jira workflow automations that eliminated 2,500+ hours of manual work, automating complex user-access assignment and enabling self-service tooling for support teams.",
     tags: ["Slack Platform", "Jira API", "Python", "Automation"],
   },
   {
@@ -179,6 +182,20 @@ export const projects: Project[] = [
     description:
       "Re-architected identity provisioning around dynamic, attribute-driven group models that replaced brittle static LDAP groups — eliminating manual access provisioning toil across the organization.",
     tags: ["Okta", "SCIM", "Workday", "LDAP"],
+  },
+  {
+    name: "SaaS Access Orchestration",
+    tagline: "LDAP → SaaS, automated",
+    description:
+      "Helped build integrations on a Go-based orchestration platform that automates LDAP group and role assignment to SaaS applications, enabling attribute-driven access provisioning at scale.",
+    tags: ["Go", "LDAP", "Orchestration", "SaaS Provisioning"],
+  },
+  {
+    name: "Google Workspace MCP Server",
+    tagline: "Internal systems, AI-native",
+    description:
+      "Personally designed and built the Google Workspace MCP server — plus several other MCP servers I build and maintain — exposing internal systems to AI agents with validated OAuth flows and release-ready security.",
+    tags: ["MCP", "Google Workspace", "OAuth", "Generative AI"],
   },
   {
     name: "Temporal Device Offboarding",
@@ -240,10 +257,21 @@ export const skills: { group: string; items: string[] }[] = [
     ],
   },
   {
+    group: "SaaS Platforms (SME)",
+    items: [
+      "Slack",
+      "Google Workspace",
+      "SendSafely",
+      "DocuSign",
+      "Okta",
+    ],
+  },
+  {
     group: "Practice & Process",
     items: [
       "ITIL / Change Management",
-      "Generative AI / MCP",
+      "MCP (build & maintain)",
+      "AI tooling — Claude, Vercel, Gemini, GPT",
       "Incident response",
       "Jira / Confluence",
       "Windows / macOS / Linux / ChromeOS",
