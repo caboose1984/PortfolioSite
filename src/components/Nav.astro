@@ -71,6 +71,19 @@ const initials = site.name
         )
       }
       {
+        site.socials.twitter && (
+          <a
+            href={site.socials.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X"
+            class="text-[var(--color-muted)] transition-colors hover:text-[var(--color-fg)]"
+          >
+            <Icon name="twitter" class="h-5 w-5" />
+          </a>
+        )
+      }
+      {
         site.socials.resumePdf && (
           <a
             href={site.socials.resumePdf}
