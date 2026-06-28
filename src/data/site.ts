@@ -21,7 +21,7 @@ export const site = {
     github: "https://github.com/Caboose1984",
     linkedin: "https://www.linkedin.com/in/andrew-arsenault-810a3381/",
 
-    twitter: "",
+    twitter: "https://x.com/aarsenault1984",
     bluesky: "",
     resumePdf: "/resume.pdf", // drop a file at public/resume.pdf to enable
   },
@@ -29,7 +29,7 @@ export const site = {
   /** Headline stats shown in the hero. */
   stats: [
     { value: "10+", label: "Years owning enterprise platforms" },
-    { value: "600+", label: "Hours/year of manual toil automated away" },
+    { value: "2,500+", label: "Hours of manual toil automated away" },
     { value: "5 OS", label: "Endpoint platforms managed at global scale" },
   ],
 } as const;
