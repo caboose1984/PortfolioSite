@@ -1,0 +1,200 @@
+---
+---
+
+<div
+  id="konami-overlay"
+  class="konami-overlay hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Easter egg terminal"
+>
+  <div class="konami-terminal">
+    <div class="konami-terminal-bar">
+      <span class="konami-dot konami-dot-red"></span>
+      <span class="konami-dot konami-dot-yellow"></span>
+      <span class="konami-dot konami-dot-green"></span>
+      <span class="konami-terminal-title">root@andrewarsenault:~</span>
+    </div>
+    <pre id="konami-output" class="konami-output"></pre>
+    <p class="konami-hint">press <kbd>esc</kbd> or click outside to exit</p>
+  </div>
+</div>
+
+<style>
+  .konami-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(6, 9, 14, 0.75);
+    backdrop-filter: blur(4px);
+    padding: 1rem;
+  }
+  .konami-overlay.hidden {
+    display: none;
+  }
+  .konami-terminal {
+    width: 100%;
+    max-width: 32rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-glow);
+    overflow: hidden;
+    font-family: var(--font-mono);
+  }
+  .konami-terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg-soft);
+  }
+  .konami-dot {
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 999px;
+    display: inline-block;
+  }
+  .konami-dot-red {
+    background: #ff5f57;
+  }
+  .konami-dot-yellow {
+    background: #febc2e;
+  }
+  .konami-dot-green {
+    background: #28c840;
+  }
+  .konami-terminal-title {
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+    color: var(--color-faint);
+  }
+  .konami-output {
+    margin: 0;
+    padding: 1rem 1.1rem;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--color-fg);
+    white-space: pre-wrap;
+    min-height: 10rem;
+  }
+  .konami-output .accent {
+    color: var(--color-accent);
+  }
+  .konami-output .muted {
+    color: var(--color-muted);
+  }
+  .konami-hint {
+    margin: 0;
+    padding: 0 1.1rem 0.9rem;
+    font-size: 0.7rem;
+    color: var(--color-faint);
+    font-family: var(--font-mono);
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const sequence = [
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "KeyB",
+      "KeyA",
+    ];
+    let progress = 0;
+
+    const overlay = document.getElementById("konami-overlay");
+    const output = document.getElementById("konami-output");
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    const lines = [
+      { text: "$ sudo ./grant-access --user recruiter", cls: "" },
+      { text: "[sudo] password for recruiter: ********", cls: "muted" },
+      { text: "Access granted.", cls: "accent" },
+      { text: "", cls: "" },
+      { text: "Loading candidate profile... done", cls: "" },
+      { text: "  toil_eliminated   : 2,500+ hrs", cls: "muted" },
+      {
+        text: "  platforms_owned   : identity, Slack, endpoint fleet (5 OS)",
+        cls: "muted",
+      },
+      { text: "  status            : open to opportunities", cls: "accent" },
+      { text: "", cls: "" },
+      { text: "Achievement unlocked: ↑ ↑ ↓ ↓ ← → ← → B A", cls: "accent" },
+      { text: "You found the Konami code. Nice instincts.", cls: "" },
+    ];
+
+    let typing = false;
+
+    async function typeLines() {
+      if (typing) return;
+      typing = true;
+      output.textContent = "";
+      for (const line of lines) {
+        const span = document.createElement("div");
+        if (line.cls) span.className = line.cls;
+        output.appendChild(span);
+        if (reduceMotion || line.text === "") {
+          span.textContent = line.text;
+          continue;
+        }
+        for (const ch of line.text) {
+          span.textContent += ch;
+          await new Promise((r) => setTimeout(r, 12));
+        }
+      }
+      typing = false;
+    }
+
+    function openEgg() {
+      overlay.classList.remove("hidden");
+      typeLines();
+    }
+
+    function closeEgg() {
+      overlay.classList.add("hidden");
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (!overlay.classList.contains("hidden")) {
+        if (e.key === "Escape") closeEgg();
+        return;
+      }
+
+      const target = e.target;
+      const isTyping =
+        target instanceof HTMLElement &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable);
+      if (isTyping) return;
+
+      progress =
+        e.code === sequence[progress]
+          ? progress + 1
+          : e.code === sequence[0]
+            ? 1
+            : 0;
+      if (progress === sequence.length) {
+        progress = 0;
+        openEgg();
+      }
+    });
+
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeEgg();
+    });
+  })();
+</script>

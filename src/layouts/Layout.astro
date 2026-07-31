@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { site } from "../data/site";
+import KonamiEgg from "../components/KonamiEgg.astro";
 
 interface Props {
   title?: string;
@@ -75,6 +76,8 @@ const ogImage = new URL("/og.png", Astro.site ?? site.url).href;
       >Skip to content</a
     >
     <slot />
+
+    <KonamiEgg />
 
     <!-- Reveal-on-scroll, progressive enhancement only -->
     <script is:inline>
