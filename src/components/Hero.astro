@@ -49,17 +49,13 @@ import Icon from "./Icon.astro";
         class="h-4 w-4 transition-transform group-hover:translate-x-0.5"
       />
     </a>
-    {
-      site.socials.resumePdf && (
-        <a
-          href={site.socials.resumePdf}
-          class="inline-flex items-center gap-2 rounded-md border border-[var(--color-border)] px-5 py-3 font-medium text-[var(--color-fg)] transition-colors hover:border-[var(--color-accent-soft)] hover:text-[var(--color-accent)]"
-        >
-          <Icon name="file" class="h-4 w-4" />
-          Résumé
-        </a>
-      )
-    }
+    <a
+      href="/resume"
+      class="inline-flex items-center gap-2 rounded-md border border-[var(--color-border)] px-5 py-3 font-medium text-[var(--color-fg)] transition-colors hover:border-[var(--color-accent-soft)] hover:text-[var(--color-accent)]"
+    >
+      <Icon name="file" class="h-4 w-4" />
+      Résumé
+    </a>
   </div>
 
   <!-- Stats strip -->
