@@ -3,11 +3,10 @@ import { site } from "../data/site";
 import Icon from "./Icon.astro";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#work", label: "Work" },
+  { href: "/#about", label: "About" },
+  { href: "/resume", label: "Résumé" },
+  { href: "/#contact", label: "Contact" },
 ];
 const initials = site.name
   .split(" ")
@@ -20,7 +19,7 @@ const initials = site.name
 >
   <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
     <a
-      href="#top"
+      href="/"
       class="font-mono text-sm font-semibold tracking-tight text-[var(--color-fg)]"
     >
       <span class="text-[var(--color-accent)]">{"<"}</span>{initials}<span
@@ -83,16 +82,12 @@ const initials = site.name
           </a>
         )
       }
-      {
-        site.socials.resumePdf && (
-          <a
-            href={site.socials.resumePdf}
-            class="hidden rounded-md border border-[var(--color-border)] px-3 py-1.5 text-sm text-[var(--color-fg)] transition-colors hover:border-[var(--color-accent-soft)] hover:text-[var(--color-accent)] sm:inline-block"
-          >
-            Résumé
-          </a>
-        )
-      }
+      <a
+        href="/resume"
+        class="hidden rounded-md border border-[var(--color-border)] px-3 py-1.5 text-sm text-[var(--color-fg)] transition-colors hover:border-[var(--color-accent-soft)] hover:text-[var(--color-accent)] sm:inline-block md:hidden"
+      >
+        Résumé
+      </a>
     </div>
   </nav>
 </header>

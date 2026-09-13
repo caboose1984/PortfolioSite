@@ -1,0 +1,39 @@
+---
+import { site } from "../data/site";
+import Icon from "./Icon.astro";
+---
+
+<section class="mx-auto max-w-5xl px-6 pb-4 pt-16 sm:pt-20">
+  <a
+    href="/#work"
+    class="reveal inline-flex items-center gap-1.5 text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent)]"
+  >
+    <Icon name="arrow" class="h-4 w-4 rotate-180" />
+    Back to work
+  </a>
+
+  <p class="reveal mt-6 font-mono text-sm text-[var(--color-accent)]">
+    Curriculum vitae
+  </p>
+  <h1 class="reveal mt-2 text-3xl font-bold tracking-tight sm:text-5xl">
+    {site.name}
+  </h1>
+  <p class="reveal mt-2 text-xl font-semibold text-[var(--color-muted)] sm:text-2xl">
+    {site.role}
+  </p>
+  <p class="reveal mt-4 max-w-2xl leading-relaxed text-[var(--color-muted)]">
+    {site.tagline}
+  </p>
+
+  {
+    site.socials.resumePdf && (
+      <a
+        href={site.socials.resumePdf}
+        class="reveal mt-7 inline-flex items-center gap-2 rounded-md bg-[var(--color-accent)] px-5 py-3 font-medium text-[var(--color-bg)] transition-transform hover:-translate-y-0.5"
+      >
+        <Icon name="file" class="h-4 w-4" />
+        Download PDF
+      </a>
+    )
+  }
+</section>

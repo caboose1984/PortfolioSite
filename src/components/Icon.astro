@@ -11,7 +11,8 @@ interface Props {
     | "arrow"
     | "external"
     | "star"
-    | "spark";
+    | "spark"
+    | "close";
   class?: string;
 }
 const { name, class: cls = "h-5 w-5" } = Astro.props;
@@ -31,9 +32,10 @@ const paths: Record<string, string> = {
   external: "M14 5h5v5m0-5L10 14M19 14v5H5V5h5",
   star: "m12 3 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 20.9l1.1-6.5L2.6 9.8l6.5-.9L12 3Z",
   spark: "M12 2v6m0 8v6m10-10h-6M8 12H2m15.5-7.5-4 4m-3 7-4 4m0-15 4 4m3 7 4 4",
+  close: "M6 6l12 12M18 6 6 18",
 };
 
-const strokeIcons = new Set(["arrow", "external", "spark"]);
+const strokeIcons = new Set(["arrow", "external", "spark", "close"]);
 const isStroke = strokeIcons.has(name);
 ---
 

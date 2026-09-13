@@ -7,7 +7,7 @@ export const site = {
   tagline:
     "I own enterprise SaaS platforms end-to-end — identity, Slack, and endpoint fleets — and build the automation that eliminates operational toil at scale.",
   location: "Antigonish, NS, Canada · Remote",
-  email: "andrewjarsenault@gmail.com",
+  email: "contact@andrewarsenault.ca",
 
   /**
    * Used for canonical URLs + sitemap.
